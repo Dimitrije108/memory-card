@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import './styles/App.css'
 
-import GameCovers from './components/GameCovers'
+import MemoryCards from './components/MemoryCards'
 
 function App() {
 
   return (
-    <GameCovers></GameCovers>
+    <MemoryCards />
   )
 }
 
