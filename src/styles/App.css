@@ -1,5 +1,5 @@
 #root {
-  max-width: 1700px;
+  max-width: 1900px;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
@@ -26,9 +26,12 @@ p {
   height: 340px;
 
   box-sizing: border-box;
-  padding: 6px;
+  overflow: hidden;
 
+  outline: 1px solid white;
+  transition: outline-color 0.4s ease, box-shadow 0.4s ease;
   border-radius: 12px;
+  cursor: pointer;
 
   background-size: cover;
   background-position: center;
@@ -38,21 +41,27 @@ p {
   justify-content: end;
 }
 
-.game-card > h2,
-.game-card > p {
-  background-color: (rgba(58, 58, 58, 0.8));
-  z-index: 1;
+.game-card:hover {
+  outline: 1px solid rgb(153, 255, 1);
+  box-shadow: 0px 0px 150px -9px rgba(153, 255, 1, 0.6);
 }
 
-.game-card > h2 {
+.game-info {
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 4px;
+}
+
+.game-info > h2 {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   overflow: hidden; 
   text-overflow: ellipsis;
   line-height: 1.2rem;
 }
 
-.game-card > p {
+.game-info > p {
   font-size: 0.8rem;
+  font-weight: 600;
 }

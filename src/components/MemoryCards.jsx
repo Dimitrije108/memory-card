@@ -8,6 +8,15 @@ export default function MemoryCards() {
 	const { data: page1, error: error1 } = useFetchData(`${RAWG_2004_URL}${API_KEY}`);
 	const { data: page2, error: error2 } = useFetchData(`${RAWG_2004_URL_2}${API_KEY}`);
 
+	console.log(page1)
+	console.log(page2)
+
+	// state changes on click registering:
+	// 1. a point for the card not previously clicked
+	// 2. reset game if card was previously clicked
+	// state change in both cases would reshufle the cards
+	// so have a shuffling func that will be triggered here
+
 	if (!page1 || !page2) {
 		return <div>Loading...</div>
 	}
@@ -44,6 +53,30 @@ export default function MemoryCards() {
 			<GameCard 
 				game={page1[4]}
 			/>
+			<GameCard 
+				game={page1[13]}
+			/>
+			<GameCard 
+				game={page1[37]}
+			/>
+			<GameCard 
+				game={page2[16]}
+			/>
+			<GameCard 
+				game={page1[29]}
+			/>
+			<GameCard 
+				game={page1[34]}
+			/>
+			<GameCard 
+				game={page1[33]}
+			/>
+			<GameCard 
+				game={page2[3]}
+			/>
+			<GameCard 
+				game={page1[24]}
+			/>
 		</div>
 	)
 }
@@ -54,8 +87,10 @@ function GameCard({ game }) {
 			className="game-card"
 			style={{ backgroundImage: `url(${game.background_image})` }}
 		>
-			<h2>{game.name}</h2>
-			<p>Metacritic: {game.metacritic}</p>
+			<div className="game-info">
+				<h2>{game.name}</h2>
+				<p>Metacritic: {game.metacritic}</p>
+			</div>
 		</div>
 	)
 }
