@@ -11,12 +11,30 @@ export default function MemoryCards() {
 	const { data: page3, error: error3 } = useFetchData(`${RAWG_2004_URL_3}${API_KEY}`);
 	const [score, setScore] = useState(0);
 	const [bestScore, setBestScore] = useState(0);
+	// Track already clicked on cards
+	const [clicked, setClicked] = useState([]);
+	// Update best score if needed
+	function handleBestScore() {
+		if (score > bestScore) {
+			setBestScore(score)
+		}
+	}
 	
-	// state changes on click registering:
-	// 1. a point for the card not previously clicked
-	// 2. reset game if card was previously clicked
-	// state change in both cases would reshufle the cards
-	// so have a shuffling func that will be triggered here
+	function checkClicked(id) {
+		return clicked.includes(id);
+	}
+	// Check if the click was on a new card or on an already clicked one
+	function handleScore(id) {
+		console.log(id)
+		if (checkClicked(id)) {
+			handleBestScore()
+			setScore(0)
+			setClicked([])
+		} else {
+			setScore(score + 1)
+			setClicked([...clicked, id])
+		}
+	}
 
 	if (!page1 || !page2 || !page3) {
 		return <div>Loading...</div>
@@ -27,7 +45,6 @@ export default function MemoryCards() {
 			<div>Error: {error1}, {error2}</div>
 		)
 	};
-
 	// Array of games picked from the API to be displayed
 	const games = [
 		page1[0], page1[1], page1[4], 
@@ -41,19 +58,30 @@ export default function MemoryCards() {
 	shuffleArray(games);
 	// Map through the array and display game cards
 	return (
-		<div className="cards-cont">
-			{games.map((game) => {
-				return <GameCard key={game.id} game={game} />
-			})}
-		</div>
+		<>
+			<p>Score: {score}</p>
+			<p>Best score: {bestScore}</p>
+			<div className="cards-cont">
+				{games.map((game) => {
+					return <GameCard 
+					key={game.id}
+					id={game.id}
+					game={game}
+					handleClick={handleScore}
+				/>
+				})}
+			</div>
+		</>
 	)
 };
 // TODO: Refactor into a separate module
-function GameCard({ game }) {
+function GameCard({ game, id, handleClick }) {
 	return (
 		<div 
 			className="game-card"
 			style={{ backgroundImage: `url(${game.background_image})` }}
+			data-id={id}
+			onClick={(e) => handleClick(e.currentTarget.dataset.id)}
 		>
 			<div className="game-info">
 				<h2>{game.name}</h2>
@@ -69,7 +97,7 @@ function shuffleArray(arr) {
 		[arr[i], arr[j]] = [arr[j], arr[i]];
 	}
 };
-
+// Custom hook to fetch API data
 function useFetchData(url) {
 	const [data, setData] = useState(null);
 	const [error, setError] = useState(null);
