@@ -17,19 +17,21 @@ p {
 
 .cards-cont {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .game-card {
-  width: 200px;
-  height: 340px;
+  width: 215px;
+  height: 320px;
 
   box-sizing: border-box;
   overflow: hidden;
 
-  outline: 1px solid white;
-  transition: outline-color 0.4s ease, box-shadow 0.4s ease;
+  outline: 1px solid black;
+  transition: outline-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
   border-radius: 12px;
   cursor: pointer;
 
@@ -44,10 +46,44 @@ p {
 .game-card:hover {
   outline: 1px solid rgb(153, 255, 1);
   box-shadow: 0px 0px 150px -9px rgba(153, 255, 1, 0.6);
+  transform: scale(1.05);
+}
+
+.game-card::before {
+  content: '';
+  position: absolute;
+  top: -150%;
+  left: -150%;
+  width: 300%;
+  height: 300%;
+  background: linear-gradient(
+    75deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.5) 40%,
+    rgba(255, 255, 255, 0.1) 60%
+  );
+  transform: rotate(25deg);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.game-card:hover::before {
+  animation: glare 1s ease-out forwards;
+  opacity: 1;
+}
+
+@keyframes glare {
+  0% {
+    transform: translate(-150%, -150%) rotate(35deg);
+  }
+  100% {
+    transform: translate(150%, 150%) rotate(35deg);
+  }
 }
 
 .game-info {
-  background-color: rgba(255, 255, 255, 0.6);
+  background-color: rgba(255, 255, 255, 0.5);
   padding: 4px;
 }
 
