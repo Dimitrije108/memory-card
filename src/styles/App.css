@@ -1,9 +1,30 @@
+@font-face {
+  font-family: Gameplay;
+  src: url(../assets/Gameplay.ttf);
+}
+
+@font-face {
+  font-family: DePixelKlein;
+  src: url(../assets/DePixelKlein.otf);
+}
+
 #root {
   max-width: 1900px;
   margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+
+  font-family: DePixelKlein;
   box-sizing: border-box;
+}
+
+h1 {
+  margin: 0;
+  margin-bottom: 8px;
+  padding: 0;
+
+  font-family: Gameplay;
+  font-size: 3rem;
+  line-height: 1.1;
+  color: rgb(185, 255, 44);
 }
 
 h2 {
@@ -13,6 +34,46 @@ h2 {
 
 p {
   margin: 0;
+}
+
+header {
+  padding: 2rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+.score-cont {
+  padding: 8px 12px;
+
+  font-family: Gameplay;
+
+  background-color: rgb(114, 114, 114);
+  border: 1px solid rgb(180, 180, 180);
+  border-radius: 12px;
+}
+
+.score-cont > div {
+  font-size: 1.5rem;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.score {
+  color: aqua;
+}
+
+.best-score {
+  color: rgb(0, 255, 64);
+}
+
+
+.score > span,
+.best-score > span {
+  margin-left: 12px;
+  color: white;
 }
 
 .cards-cont {
@@ -27,10 +88,11 @@ p {
   width: 215px;
   height: 320px;
 
+  text-align: center;
+
   box-sizing: border-box;
   overflow: hidden;
-
-  outline: 1px solid black;
+  outline: 1px solid rgb(180, 180, 180);
   transition: outline-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
   border-radius: 12px;
   cursor: pointer;
@@ -45,8 +107,8 @@ p {
 
 .game-card:hover {
   outline: 1px solid rgb(153, 255, 1);
-  box-shadow: 0px 0px 150px -9px rgba(153, 255, 1, 0.6);
-  transform: scale(1.05);
+  box-shadow: 0px 0px 50px -9px rgba(153, 255, 1, 0.6);
+  transform: scale(1.03);
 }
 
 .game-card::before {
@@ -83,7 +145,7 @@ p {
 }
 
 .game-info {
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(51, 51, 51, 0.6);
   padding: 4px;
 }
 
