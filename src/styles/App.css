@@ -163,3 +163,31 @@ header {
   font-size: 0.8rem;
   font-weight: 600;
 }
+/* Loading spinner animation when retrieveing API */
+.loader {
+  width: 50px;
+  height: 50px;
+
+  margin: auto;
+
+  background-color: rgba(51, 51, 51, 0.6);
+  border: 2px solid rgb(153, 255, 1);
+  border-radius: 50%;
+  border-top: 2px solid rgb(255, 255, 255);
+
+  animation: spinner 1s linear infinite;
+
+  position: absolute;
+  top: 40%;
+  right: 50%;
+  z-index: 3;
+}
+
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

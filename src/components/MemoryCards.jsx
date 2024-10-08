@@ -36,7 +36,7 @@ export default function MemoryCards() {
 	}
 
 	if (!page1 || !page2 || !page3) {
-		return <div>Loading...</div>
+		return <div className="loader"></div>
 	};
 
 	if (error1 || error2 || error3) {
