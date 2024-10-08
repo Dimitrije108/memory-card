@@ -25,7 +25,6 @@ export default function MemoryCards() {
 	}
 	// Check if the click was on a new card or on an already clicked one
 	function handleScore(id) {
-		console.log(id)
 		if (checkClicked(id)) {
 			handleBestScore()
 			setScore(0)
@@ -59,9 +58,24 @@ export default function MemoryCards() {
 	// Map through the array and display game cards
 	return (
 		<>
-			<p>Score: {score}</p>
-			<p>Best score: {bestScore}</p>
-			<div className="cards-cont">
+			<header>
+				<div className="heading-cont">
+					<h1>Memory card game</h1>
+					<p>Increase your score by clicking on a game card but don't click on any twice!</p>
+					<p>Brush up on video games that came out in 2004, the best year in gaming!</p>
+				</div>
+				<div className="score-cont">
+					<div className="score">
+						<p>Score: </p>
+						<span>{score}</span>
+					</div>
+					<div className="best-score">
+						<p>Best score: </p>
+						<span>{bestScore}</span>
+					</div>
+				</div>
+			</header>
+			<main className="cards-cont">
 				{games.map((game) => {
 					return <GameCard 
 					key={game.id}
@@ -70,7 +84,7 @@ export default function MemoryCards() {
 					handleClick={handleScore}
 				/>
 				})}
-			</div>
+			</main>
 		</>
 	)
 };
