@@ -35,14 +35,22 @@ export default function MemoryCards() {
 		}
 	}
 
-	if (!page1 || !page2 || !page3) {
-		return <div className="loader"></div>
-	};
-
 	if (error1 || error2 || error3) {
 		return (
-			<div>Error: {error1}, {error2}</div>
-		)
+			<ul className="error-msg">
+				<li>Error:
+				<ul>
+					{error1 && <li>{error1.message}</li>}
+					{error2 && <li>{error2.message}</li>}
+					{error3 && <li>{error3.message}</li>}
+				</ul>
+				</li>
+			</ul>
+		) 
+	};
+
+	if (!page1 || !page2 || !page3) {
+		return <div className="loader"></div>
 	};
 	// Array of games picked from the API to be displayed
 	const games = [
@@ -61,8 +69,8 @@ export default function MemoryCards() {
 			<header>
 				<div className="heading-cont">
 					<h1>Memory card game</h1>
-					<p>Increase your score by clicking on a game card but don't click on any twice!</p>
-					<p>Brush up on video games that came out in 2004, the best year in gaming!</p>
+					<p>Increase your score by clicking on a game card but <span className="accent">don't click on any twice</span>!</p>
+					<p>Brush up on video games that came out in <span className="accent">2004</span>, the best year in gaming!</p>
 				</div>
 				<div className="score-cont">
 					<div className="score">
@@ -139,7 +147,6 @@ function useFetchData(url) {
 					setError(error);
 				}
 				console.error(error);
-				alert(error);
 			}
 		}
 
