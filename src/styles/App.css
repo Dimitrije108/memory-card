@@ -139,7 +139,7 @@ header {
     75deg,
     rgba(255, 255, 255, 0.1) 0%,
     rgba(255, 255, 255, 0.5) 40%,
-    rgba(255, 255, 255, 0.1) 60%
+    rgba(255, 255, 255, 0.1) 60%,
   );
   transform: rotate(25deg);
   opacity: 0;
@@ -178,7 +178,6 @@ header {
 
 .game-info > p {
   font-size: 0.8rem;
-  font-weight: 600;
 }
 /* Loading spinner animation when retrieveing API */
 .loader {

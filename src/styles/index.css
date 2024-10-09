@@ -9,11 +9,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html {
+  height: 100%;
+  background: linear-gradient(#333333, #444444, #555555, #40a767);
+}
+
 html,
 body {
   margin: 0;
   padding: 0;
-  background-color: rgb(59, 64, 66);
+  
   color: white;
 }
 
