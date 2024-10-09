@@ -19,8 +19,7 @@
 
 h1 {
   margin: 0;
-  margin-bottom: 8px;
-  padding: 0;
+  padding-bottom: 8px;
 
   font-family: Gameplay;
   font-size: 3rem;
@@ -48,7 +47,7 @@ p {
 }
 
 header {
-  margin: 2rem;
+  padding: 2rem;
 
   display: flex;
   justify-content: space-between;
@@ -91,7 +90,7 @@ header {
 }
 
 .cards-cont {
-  margin: 2rem;
+  padding: 1rem 2rem;
 
   display: flex;
   justify-content: center;
