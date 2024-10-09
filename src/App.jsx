@@ -1,10 +1,9 @@
-import { useState } from 'react'
 import './styles/App.css'
-import MemoryCards from './components/MemoryCards'
+import MemoryCardGame from './components/MemoryCardGame'
 
 function App() {
   return (
-    <MemoryCards />
+    <MemoryCardGame />
   )
 }
 
